@@ -1,0 +1,20 @@
+# Set themes and working_directory
+[general]
+  import = [
+      "~/.config/alacritty/themes/themes/doom_one.toml"
+  ]
+  working_directory = "/Users/rainsfall/playground/"
+
+# Set fish as the default shell
+[terminal]
+  shell = { program = "/opt/homebrew/bin/fish" }
+
+# Set option as alt
+[window]
+  option_as_alt = "Both"
+
+# Set font
+[font]
+  normal = { family= "JetBrainsMono Nerd Font", style = "Regular"}
+  size = 17
+
