@@ -39,6 +39,14 @@ tar -xzf /tmp/nvim.tar.gz -C "$HOME/.local"
 ln -sf "$HOME/.local/nvim-linux-${nvim_arch}/bin/nvim" "$HOME/.local/bin/nvim"
 rm -f /tmp/nvim.tar.gz
 
+# tmux official builds: tarball contains a single static `tmux` binary
+log "Installing latest tmux..."
+tmux_arch="$(uname -m)"
+[[ "$tmux_arch" == "aarch64" ]] && tmux_arch="arm64"
+tmux_url="$(curl -fsSL https://api.github.com/repos/tmux/tmux-builds/releases/latest \
+    | grep browser_download_url | grep "linux-${tmux_arch}.tar.gz" | cut -d '"' -f4)"
+curl -fsSL "$tmux_url" | tar -xzf - -C "$HOME/.local/bin"
+
 log "Installing latest uv..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -67,9 +75,11 @@ ln -s "$DOTFILES_DIR/fish"       "$HOME/.config/fish"
 ln -s "$DOTFILES_DIR/nvim"       "$HOME/.config/nvim"
 ln -s "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 
-# ---------- 5. Make fish the login shell ----------
-fish_path="$(command -v fish)"
-grep -qxF "$fish_path" /etc/shells || printf '%s\n' "$fish_path" | sudo tee -a /etc/shells >/dev/null
-chsh -s "$fish_path"
+cat >> "$HOME/.bashrc" <<'EOF'
+    if command -v tmux >/dev/null 2>&1 && [ -z "${TMUX:-}" ]; then
+       exec tmux new-session -A -s main
+    fi
+EOF
 
 log "Complete!"
+

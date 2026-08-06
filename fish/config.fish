@@ -5,10 +5,6 @@ if status is-interactive
 
 end
 
-# Alias
-alias vim nvim
-alias cd z
-alias ls eza
 alias gs "git status"
 alias ga "git add"
 alias gcam "git add . && git commit -m"
@@ -30,5 +26,6 @@ end
 
 if command -q zoxide
     zoxide init fish | source
+    alias cd z
 end
 
