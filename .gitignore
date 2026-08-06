@@ -1,0 +1,3 @@
+# fish 本地状态与备份(含历史密钥,不入库)
+fish/fish_variables
+fish/config.fish.bak.*
