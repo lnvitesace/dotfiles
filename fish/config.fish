@@ -5,12 +5,16 @@ if status is-interactive
 
 end
 
+alias vim "nvim"
+alias cat "bat"
+alias cd "z"
+alias ls "eza"
 alias gs "git status"
 alias ga "git add"
 alias gcam "git add . && git commit -m"
 alias gp "git push"
-alias k kubectl
-alias d docker
+alias k "kubectl"
+alias d "docker"
 alias kg "kubectl get"
 alias kd "kubectl describe"
 alias kgp "kubectl get pods"
@@ -24,8 +28,33 @@ if command -q fzf; and fzf --fish >/dev/null 2>&1
     fzf --fish | source
 end
 
+# Anthropic config
+set -gx ANTHROPIC_BASE_URL https://anyrouter.top
+set -gx ANTHROPIC_AUTH_TOKEN 
+
+# set -gx ANTHROPIC_BASE_URL "https://www.su8.codes/codex/v1"
+# set -gx ANTHROPIC_AUTH_TOKEN
+set -gx CLAUDE_CODE_ATTRIBUTION_HEADER 0
+set -gx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 1
+set -gx DISABLE_INSTALLATION_CHECKS 1
+set -gx ENABLE_TOOL_SEARCH 0
+
+# Gemini config
+# set -gx GOOGLE_GEMINI_BASE_URL "https://api.chengtx.vip"
+# set -gx GEMINI_API_KEY <your-key>
+
 if command -q zoxide
     zoxide init fish | source
     alias cd z
 end
 
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+# source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# >>> grok installer >>>
+# fish_add_path $HOME/.grok/bin
+# <<< grok installer <<<
+
+# kimi-code
+# fish_add_path -g "~/.kimi-code/bin"
