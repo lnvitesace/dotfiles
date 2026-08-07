@@ -5,23 +5,34 @@ if status is-interactive
 
 end
 
-alias vim "nvim"
-alias cat "bat"
-alias cd "z"
-alias ls "eza"
-alias gs "git status"
-alias ga "git add"
-alias gcam "git add . && git commit -m"
-alias gp "git push"
-alias k "kubectl"
-alias d "docker"
-alias kg "kubectl get"
-alias kd "kubectl describe"
-alias kgp "kubectl get pods"
-alias codex "codex --yolo"
-alias dcu "docker compose up"
-alias dcd "docker compose down"
-alias dl "docker logs -f --tail 100"
+# Common alias
+alias vim nvim
+alias cat bat
+alias cd z
+alias ls eza
+
+# Git alias
+abbr --add gs git status
+abbr --add ga git add
+abbr --add gcam "git add . && git commit -m"
+abbr --add gp git push
+abbr --add gl git log --all --graph --decorate --oneline
+abbr --add gd git diff
+
+# Docker alias
+abbr --add dcu docker compose up
+abbr --add dcd docker compose down
+abbr --add dl docker logs -f --tail 100
+abbr --add dp docker pull
+
+# k8s alias
+abbr --add k kubectl
+abbr --add kg kubectl get
+abbr --add kd kubectl describe
+abbr --add kgp kubectl get pods
+
+# Other alias
+abbr --add codex codex --yolo
 
 # fzf keybindings
 fzf --fish | source
