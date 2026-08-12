@@ -40,3 +40,9 @@ fzf --fish | source
 # zoxide init
 zoxide init fish | source
 
+
+# kimi-code
+fish_add_path -g "~/.kimi-code/bin"
+
+# opencode
+fish_add_path ~/.opencode/bin
