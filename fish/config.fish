@@ -8,7 +8,6 @@ end
 # Common alias
 alias vim nvim
 alias cat bat
-alias cd z
 alias ls eza
 
 # Git alias
@@ -46,3 +45,6 @@ fish_add_path -g "~/.kimi-code/bin"
 
 # opencode
 fish_add_path ~/.opencode/bin
+
+# zoxide
+zoxide init --cmd cd fish | source
