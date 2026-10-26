@@ -5,9 +5,11 @@ if status is-interactive
 
 end
 
+# CTRL-Z as fg
+bind \cz 'fg 2>/dev/null; commandline -f repaint'
+
 # Common alias
 alias vim nvim
-alias cat bat
 alias ls eza
 
 # Git alias
@@ -35,10 +37,6 @@ abbr --add codex codex --yolo
 
 # fzf keybindings
 fzf --fish | source
-
-# zoxide init
-zoxide init fish | source
-
 
 # kimi-code
 fish_add_path -g "~/.kimi-code/bin"
